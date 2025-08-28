@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://127.0.0.1:5000/house/111872 -->
+<html lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>二手好房</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+<!--    <link href="https://cdn.bootcss.com/font-awesome/5.8.1/css/all.css" rel="stylesheet">-->
+    <link href="/static/css/all.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/clean-blog.min.css" rel="stylesheet">
+
+    <style>
+
+        #mainNav {
+            border-bottom: 1px solid #ecf0f1;
+            background: transparent;
+        }
+
+        #mainNav .navbar-brand {
+            padding: 10px 20px;
+            color: #343a40;
+        }
+
+        #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+            color: #0085A1;
+        }
+
+        #mainNav .navbar-nav > li.nav-item > a {
+            padding: 10px 20px;
+            color: #343a40;
+        }
+
+        #mainNav .navbar-nav > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {
+            color: #0085A1;
+        }
+
+        header.masthead {
+            margin-bottom: 50px;
+            background: no-repeat center center;
+            background-color: #fff;
+            background-attachment: scroll;
+            position: relative;
+            background-size: cover;
+        }
+
+        header.masthead .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #fff;
+            opacity: 0.5;
+        }
+
+        .course {
+            margin-top: 10px;
+            padding: 7px 5px 0 5px;
+            background: #fff;
+        }
+
+        /*本页的内容*/
+        .no-margin-bottom {
+            margin-bottom: 0 !important;
+        }
+
+        .detail-body {
+            background: #fff;
+            margin-top: 100px;
+
+        }
+
+        .info-line {
+            margin: 10px 0 35px 0;
+        }
+
+        .house-info {
+            padding: 20px 0 20px 0;
+            font-size: 20px;
+            color: #e74c3c;
+        }
+
+        .detail-header {
+            margin: 50px 0 10px;
+        }
+
+        .describe {
+            font-size: 15px;
+            color: #bdc3c7;
+        }
+
+        /* 二级标题 */
+        .attribute-header {
+            padding: 30px 0 10px 0;
+            margin-bottom: 5px;
+            font-size: 22px;
+            font-weight: 500;
+            border-bottom: #ecf0f1 1px solid;
+        }
+
+        .attribute-header .attribute-header-tip-line {
+            font-size: 14px;
+            color: #a4b0be;
+            font-weight: 300;
+            line-height: 25px;
+        }
+
+        /* 属性 */
+        .attribute-info {
+            /*border-bottom: #ecf0f1 1px solid;*/
+            padding: 20px;
+        }
+
+        .attribute-text {
+            font-size: 14px;
+            color: #a4b0be;
+            font-weight: 300;
+            line-height: 25px;
+            text-align: justify;
+        }
+
+        .info-text {
+            font-size: 14px;
+            color: #555;
+            font-weight: 400;
+            line-height: 40px;
+            text-align: justify;
+        }
+
+        .collection {
+            margin-left: 420px;
+            background-color: #fff;
+            border-radius: 3px;
+            border: 1px solid #ecf0f1;
+            display: inline-block;
+            position: absolute;
+        }
+
+        .collection:hover {
+            background-color: #f1c40f;
+            border: 0.5px solid #ecf0f1;
+
+        }
+
+        .collection i {
+            color: #f1c40f;
+            padding: 5px 10px;
+        }
+
+        .collection:hover i {
+            color: #fff;
+        }
+
+        /* 配套设施 */
+        .icon-1 {
+            width: 28px;
+            height: 45px;
+            margin: 0 auto 5px;
+            background: url('/static/img/bx.png') no-repeat;
+            display: block;
+        }
+
+        .icon-2 {
+            width: 36px;
+            height: 45px;
+            margin: 0 auto 5px;
+            background: url('/static/img/xyj.png') no-repeat;
+            display: block;
+        }
+
+        .icon-3 {
+            width: 48px;
+            height: 45px;
+            margin: 0 auto 5px;
+            background: url('/static/img/ds.png') no-repeat;
+            display: block;
+        }
+
+        .icon-4 {
+            width: 48px;
+            height: 45px;
+            margin: 0 auto 5px;
+            background: url('/static/img/kt.png') no-repeat;
+            display: block;
+        }
+
+        .icon-5 {
+            width: 28px;
+            height: 45px;
+            margin: 0 auto 5px;
+            background: url('/static/img/nq.png') no-repeat;
+            display: block;
+        }
+
+        .icon-6 {
+            width: 46px;
+            height: 45px;
+            margin: 0 auto 5px;
+            background: url('/static/img/rsq.png') no-repeat;
+            display: block;
+        }
+
+        .icon-7 {
+            width: 48px;
+            height: 45px;
+            margin: 0 auto 5px;
+            background: url('/static/img/trq.png') no-repeat;
+            display: block;
+        }
+
+        .icon-8 {
+            width: 48px;
+            height: 45px;
+            margin: 0 auto 5px;
+            background: url('/static/img/chuang.png') no-repeat;
+            display: block;
+        }
+
+        .icon-9 {
+            width: 46px;
+            height: 45px;
+            margin: 0 auto 5px;
+            background: url('/static/img/wifi.png') no-repeat;
+            display: block;
+        }
+
+        .icon-10 {
+            width: 46px;
+            height: 45px;
+            margin: 0 auto 5px;
+            background: url('/static/img/dt.png') no-repeat;
+            display: block;
+        }
+
+        .attribute-text-sm {
+            font-size: 14px;
+            color: #a4b0be;
+            font-weight: 300;
+            line-height: 25px;
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* recommend */
+
+        .recommend {
+            margin-top: 5px;
+            padding-top: 27px;
+        }
+
+        .recommend-info span {
+            font-size: 14px;
+            color: #555;
+            font-weight: 400;
+            line-height: 20px;
+            text-align: justify;
+        }
+
+        .recommend-info1 {
+            height: 20px;
+            font-weight: 300;
+            font-size: 13px;
+        }
+
+        /* side data */
+        #pie {
+            height: 290px;
+        }
+
+        #f_line {
+            height: 290px;
+        }
+
+        #scolumn_line {
+            height: 380px;
+        }
+
+        #broken_line {
+            height: 340px;
+        }
+
+        .self-no-padding {
+            padding: 0;
+        }
+
+        /* login */
+        .m-header {
+            padding: 10px 16px 2px;
+        }
+
+        .login_form {
+            margin-top: 150px;
+            z-index：999;
+        }
+
+        .form-info {
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        .switch-info {
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 2px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="http://127.0.0.1:5000/">二手好房</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:5000/">首页</a>
+                </li>
+
+                <li class="nav-item" id="user">
+                    
+                    <!--没有处于登录装填下，才显示登录按钮-->
+                    <a class="nav-link" data-toggle="modal" data-target="#login" href="http://127.0.0.1:5000/house/111872">登录</a>
+                    
+                </li>
+
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<header class="masthead no-margin-bottom" style="background-color: #fff">
+    <div class="overlay"></div>
+    <div class="container">
+
+
+        <!--内容-->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 mx-auto detail-body">
+                <div class="row info-line">
+                    <!--大标题-->
+                    <div class="col-lg-12 col-md-12 detail-header">
+                        <h3>顺义-顺义城-怡馨家园&nbsp;2室1厅</h3>
+                        <div class="describe">
+                            <span>为您精准定位，当前城市房源信息</span>
+                        </div>
+                    </div>
+                    <!--左详情-->
+                    <div class="col-lg-8 col-md-8">
+                        <div class="course">
+
+                            <!--图-->
+                            <div><a href="http://127.0.0.1:5000/house/111872#"><img class="img-fluid img-box" src="./detail_page_files/house-bg1.jpg" alt=""></a>
+                            </div>
+                            <!--价格-->
+                            <div class="house-info">
+                                <span class="price">￥&nbsp;3900/月</span>
+                                <span class="collection" id="btn-collection"><a><i class="fa fa-heart" aria-hidden="true"> 收藏</i></a></span>
+                            </div>
+
+                            <!--基本信息标题-->
+                            <div class="attribute-header">
+                                <h4>基本信息</h4>
+                            </div>
+                            <!--属性1-->
+                            <div class="row attribute-info">
+                                <div class="col-lg-2 col-md-2">
+                                    <span class="attribute-text">基本属性</span>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div>
+                                        <span class="attribute-text">房屋户型：</span>
+                                        <span class="info-text">2室1厅</span>
+                                    </div>
+                                    <div>
+                                        <span class="attribute-text">建筑面积：</span>
+                                        <span class="info-text">99平方米</span>
+                                    </div>
+                                    <div>
+                                        <span class="attribute-text">房屋朝向：</span>
+                                        <span class="info-text">朝南北</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div>
+                                        <span class="attribute-text">所在区域：</span>
+                                        <span class="info-text">顺义-顺义城-怡馨家园</span>
+                                    </div>
+                                    <div>
+                                        <span class="attribute-text">租住类型：</span>
+                                        <span class="info-text">整租</span>
+                                    </div>
+                                    <div>
+                                        <span class="attribute-text">房东电话：</span>
+                                        <span class="info-text">18513521189</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--属性2-->
+                            <div class="row attribute-info">
+                                <div class="col-lg-2 col-md-2">
+                                    <span class="attribute-text">房屋卖点</span>
+                                </div>
+                                <div class="col-lg-8 col-md-8">
+                                    <div>
+                                        <span class="attribute-text">交通条件：</span>
+                                        <span class="info-text">暂无信息！</span>
+                                    </div>
+                                    <div>
+                                        <span class="attribute-text">优势条件：</span>
+                                        <span class="info-text">舒适,温馨,大气,现代于一身的房东房出租,可拎包入住</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!--房源配套设施-->
+                            <div class="attribute-header">
+                                <h4>房源配套设施</h4>
+                            </div>
+                            <!--设施列表-->
+                            <div class="row attribute-info">
+                                <div class="col-lg-2 col-md-2">
+                                    <span class="icon-1"></span>
+
+                                    
+                                    <span class="attribute-text-sm" style="color: #f1c40f">冰箱</span>
+                                    
+                                </div>
+                                <div class="col-lg-2 col-md-2">
+                                    <span class="icon-2"></span>
+                                    
+                                    <span class="attribute-text-sm" style="color: #f1c40f">洗衣机</span>
+                                    
+
+                                </div>
+                                <div class="col-lg-2 col-md-2">
+                                    <span class="icon-3"></span>
+
+                                    
+                                    <span class="attribute-text-sm" style="color: #f1c40f">电视</span>
+                                    
+                                </div>
+                                <div class="col-lg-2 col-md-2">
+                                    <span class="icon-4"></span>
+
+                                    
+                                    <span class="attribute-text-sm" style="color: #f1c40f">空调</span>
+                                    
+                                </div>
+                                <div class="col-lg-2 col-md-2">
+                                    <span class="icon-5"></span>
+
+                                    
+                                    <span class="attribute-text-sm" style="color: #f1c40f">暖气</span>
+                                    
+
+                                </div>
+                            </div>
+                            <div class="row attribute-info">
+                                <div class="col-lg-2 col-md-2">
+                                    <span class="icon-6"></span>
+
+                                    
+                                    <span class="attribute-text-sm" style="color: #f1c40f">热水器</span>
+                                    
+                                </div>
+                                <div class="col-lg-2 col-md-2">
+                                    <span class="icon-7"></span>
+
+                                    
+                                    <span class="attribute-text-sm"><s>天然气</s></span>
+                                    
+                                </div>
+                                <div class="col-lg-2 col-md-2">
+                                    <span class="icon-8"></span>
+
+                                    
+                                    <span class="attribute-text-sm" style="color: #f1c40f">床</span>
+                                    
+                                </div>
+                                <div class="col-lg-2 col-md-2">
+                                    <span class="icon-9"></span>
+
+                                    
+                                    <span class="attribute-text-sm" style="color: #f1c40f">Wi-Fi</span>
+                                    
+                                </div>
+                                <div class="col-lg-2 col-md-2">
+                                    <span class="icon-10"></span>
+
+                                    
+                                    <span class="attribute-text-sm"><s>电梯</s></span>
+                                    
+                                </div>
+                            </div>
+
+                            <!--推荐标题-->
+                            <div class="attribute-header">
+                                <h4>推荐房源</h4>
+                                <div class="attribute-header-tip-line">
+                                    <span>根据您的浏览习惯，推荐优质房源</span>
+                                </div>
+                            </div>
+                            <!--推荐-->
+                            <div class="row">
+                                <div class="col-md-11 col-lg-11">
+                                    <div class="row">
+                                        
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="recommend">
+                                                <div><a href="http://127.0.0.1:5000/house/63011"><img class="img-fluid img-box" src="./detail_page_files/house-bg1.jpg" alt=""></a>
+                                                </div>
+                                                <div class="recommend-info">
+                                                    <span class="glyphicon glyphicon-map-marker"></span>
+                                                    <span>顺义-顺义城-怡馨家园</span>
+                                                </div>
+                                                <div class="recommend-info1">
+                                                    <span>2室1厅-80平方米</span>
+                                                    <span class="price float-right" style="color: #e74c3c">￥&nbsp;4000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="recommend">
+                                                <div><a href="http://127.0.0.1:5000/house/100826"><img class="img-fluid img-box" src="./detail_page_files/house-bg1.jpg" alt=""></a>
+                                                </div>
+                                                <div class="recommend-info">
+                                                    <span class="glyphicon glyphicon-map-marker"></span>
+                                                    <span>顺义-顺义城-怡馨家园</span>
+                                                </div>
+                                                <div class="recommend-info1">
+                                                    <span>1室0厅-46平方米</span>
+                                                    <span class="price float-right" style="color: #e74c3c">￥&nbsp;2800</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="recommend">
+                                                <div><a href="http://127.0.0.1:5000/house/63171"><img class="img-fluid img-box" src="./detail_page_files/house-bg1.jpg" alt=""></a>
+                                                </div>
+                                                <div class="recommend-info">
+                                                    <span class="glyphicon glyphicon-map-marker"></span>
+                                                    <span>顺义-顺义城-怡馨家园</span>
+                                                </div>
+                                                <div class="recommend-info1">
+                                                    <span>3室1厅-118平方米</span>
+                                                    <span class="price float-right" style="color: #e74c3c">￥&nbsp;5000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="recommend">
+                                                <div><a href="http://127.0.0.1:5000/house/73413"><img class="img-fluid img-box" src="./detail_page_files/house-bg1.jpg" alt=""></a>
+                                                </div>
+                                                <div class="recommend-info">
+                                                    <span class="glyphicon glyphicon-map-marker"></span>
+                                                    <span>顺义-顺义城-怡馨家园</span>
+                                                </div>
+                                                <div class="recommend-info1">
+                                                    <span>1室1厅-54平方米</span>
+                                                    <span class="price float-right" style="color: #e74c3c">￥&nbsp;3200</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="recommend">
+                                                <div><a href="http://127.0.0.1:5000/house/44827"><img class="img-fluid img-box" src="./detail_page_files/house-bg1.jpg" alt=""></a>
+                                                </div>
+                                                <div class="recommend-info">
+                                                    <span class="glyphicon glyphicon-map-marker"></span>
+                                                    <span>顺义-顺义城-怡馨家园</span>
+                                                </div>
+                                                <div class="recommend-info1">
+                                                    <span>1室1厅-70平方米</span>
+                                                    <span class="price float-right" style="color: #e74c3c">￥&nbsp;3300</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="recommend">
+                                                <div><a href="http://127.0.0.1:5000/house/83303"><img class="img-fluid img-box" src="./detail_page_files/house-bg1.jpg" alt=""></a>
+                                                </div>
+                                                <div class="recommend-info">
+                                                    <span class="glyphicon glyphicon-map-marker"></span>
+                                                    <span>顺义-顺义城-怡馨家园</span>
+                                                </div>
+                                                <div class="recommend-info1">
+                                                    <span>2室1厅-75平方米</span>
+                                                    <span class="price float-right" style="color: #e74c3c">￥&nbsp;4200</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--右边栏-->
+                    <div class="col-lg-4 col-md-4">
+                        <div class="row">
+
+                            <!--line-->
+                            <div class="col-lg-12 col-md-12 mx-auto attribute-header">
+                                <h4><i class="fa fa-align-right" aria-hidden="true"></i>&nbsp;&nbsp;顺义-顺义城
+                                    价格走势</h4>
+                                <div class="attribute-header-tip-line">
+                                    <span>人工智能算法，为您预测房价走势</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 mx-auto browse-record-first-div self-no-padding">
+                                <div id="f_line" class="echarts-tu" _echarts_instance_="ec_1660208711962" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;"><div style="position: relative; overflow: hidden; width: 370px; height: 290px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas data-zr-dom-id="zr_0" width="370" height="290" style="position: absolute; left: 0px; top: 0px; width: 370px; height: 290px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div style="position: absolute; display: none; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s, top 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s; background-color: rgba(50, 50, 50, 0.5); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font: 14px / 21px &quot;Microsoft YaHei&quot;; padding: 5px; left: 89px; top: 109px;">06-13<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#C1232B;"></span>分散值(实际值): 16.87<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#27727B;"></span>线性值(预测值): 60.15771151425401</div></div>
+                            </div>
+
+                            <!--pie-->
+                            <div class="col-lg-12 col-md-12 mx-auto attribute-header">
+                                <h4><i class="fa fa-align-right" aria-hidden="true"></i>&nbsp;&nbsp;顺义-顺义城
+                                    户型占比</h4>
+                                <div class="attribute-header-tip-line">
+                                    <span>根据户型占比，了解户型稀缺度</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 mx-auto browse-record-first-div self-no-padding">
+                                <div id="pie" _echarts_instance_="ec_1660208711960" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;"><div style="position: relative; overflow: hidden; width: 370px; height: 290px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="370" height="290" style="position: absolute; left: 0px; top: 0px; width: 370px; height: 290px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div></div></div>
+                            </div>
+
+                            <!--pie2-->
+                            <div class="col-lg-12 col-md-12 mx-auto attribute-header">
+                                <h4><i class="fa fa-align-right" aria-hidden="true"></i>&nbsp;&nbsp;顺义-顺义城
+                                    小区房源数量TOP20</h4>
+                                <div class="attribute-header-tip-line">
+                                    <span>关注房源数量，了解房源热点</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 mx-auto browse-record-first-div self-no-padding">
+                                <div id="scolumn_line" _echarts_instance_="ec_1660208711961" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;"><div style="position: relative; overflow: hidden; width: 370px; height: 380px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="370" height="380" style="position: absolute; left: 0px; top: 0px; width: 370px; height: 380px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div></div></div>
+                            </div>
+
+                            <!--line2-->
+                            <div class="col-lg-12 col-md-12 mx-auto attribute-header">
+                                <h4><i class="fa fa-align-right" aria-hidden="true"></i>&nbsp;&nbsp;顺义-顺义城
+                                    户型价格走势</h4>
+                                <div class="attribute-header-tip-line">
+                                    <span>关注房源单价，了解各小区房价</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 mx-auto browse-record-first-div self-no-padding">
+                                <div id="broken_line" _echarts_instance_="ec_1660208711963" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;"><div style="position: relative; overflow: hidden; width: 370px; height: 340px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="370" height="340" style="position: absolute; left: 0px; top: 0px; width: 370px; height: 340px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--注册登录-->
+        <div class="row info-line">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <!-- 注册窗口 -->
+                <div id="register" class="modal fade login_form" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body m-header">
+                                <button class="close" data-dismiss="modal">
+                                    <span>×</span>
+                                </button>
+                            </div>
+                            <div class="modal-title">
+                                <h1 class="text-center">注册</h1>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-group" id="registeform" action="http://127.0.0.1:5000/register" method="post">
+                                    <div class="form-group">
+                                        <label for="" class="form-info">用户名</label>
+                                        <input class="form-control" name="username" type="text" placeholder="6-15位字母或数字">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="form-info">密码</label>
+                                        <input class="form-control" name="password" type="password" placeholder="至少6位字母或数字">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="form-info">再次输入密码</label>
+                                        <input class="form-control" name="confirmPassword" type="password" placeholder="至少6位字母或数字">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="form-info">邮箱</label>
+                                        <input class="form-control" name="email" type="email" placeholder="例如:123@123.com">
+                                    </div>
+                                    <div class="text-right">
+                                        <button class="btn btn-primary" id="registe-btn">提交</button>
+                                        <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                    </div>
+                                    <a href="http://127.0.0.1:5000/house/111872" data-toggle="modal" data-dismiss="modal" data-target="#login" class="switch-info">已有账号？点我登录</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 登录窗口 -->
+                <div id="login" class="modal fade login_form">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body m-header">
+                                <button class="close" data-dismiss="modal">
+                                    <span>×</span>
+                                </button>
+                            </div>
+                            <div class="modal-title">
+                                <h1 class="text-center">登录</h1>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-group" id="loginform" action="http://127.0.0.1:5000/login" method="post">
+                                    <div class="form-group">
+                                        <label for="" class="form-info">用户名</label>
+                                        <input class="form-control" name="username" type="text" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="form-info">密码</label>
+                                        <input class="form-control" name="password" type="password" placeholder="">
+                                    </div>
+                                    <div class="text-right">
+                                        <button class="btn btn-primary" id="login-btn">登录</button>
+                                        <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                    </div>
+                                    <a href="http://127.0.0.1:5000/house/111872" data-toggle="modal" data-dismiss="modal" data-target="#register" class="switch-info">还没有账号？点我注册</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<hr>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <p class="copyright text-muted">Copyright © 二手好房 2019</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>-->
+<script src="/static/js/bootstrapValidator.min.js"></script>
+<script src="/static/js/login.js"></script>
+
+
+<!-- Custom scripts for this template -->
+<script src="/static/js/clean-blog.min.js"></script>
+
+<!-- side data -->
+<script type="text/javascript" src="/static/vendor/echarts-stat/ecStat.min.js"></script>
+<script src="/static/js/echarts.min.js"></script>
+<script src="/static/js/infographic.js"></script>
+<script src="/static/js/show_data_pie.js"></script>
+<script src="/static/js/f_data.js"></script>
+<script src="/static/js/show_column_data.js"></script>
+<script src="/static/js/show_broken_line_data.js"></script>
+
+<script>
+    $('document').ready(function () {
+        // 获取scatter
+        $.ajax({
+            url: "/get/scatterdata/顺义-顺义城",
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                getdata1(data['data']);
+
+            }
+        });
+        // 获取pie
+        $.ajax({
+            url: "/get/piedata/顺义-顺义城",
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                pie_chart(data['data'])
+            }
+        });
+        // 获取column
+        $.ajax({
+            url: "/get/columndata/顺义-顺义城",
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                column_chart(data['data'])
+            }
+        });
+
+// 获取broken_line
+$.ajax({
+    url: "/get/brokenlinedata/顺义-顺义城",
+    type: 'get',
+    dataType: 'json',
+    success: function (data) {
+        broken_line_chart(data['data'])
+    }
+});
+        // 点击收藏
+        $("#btn-collection").on("click", function () {
+            $.ajax({
+                url: "/add/collection/111872",
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    if (data['valid'] == '0') {
+                        alert(data['msg'])
+                    } else {
+                        alert(data['msg'])
+                    }
+                }
+            });
+        })
+    })
+</script>
+
+
+
+</body></html>

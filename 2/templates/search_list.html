@@ -1,0 +1,3557 @@
+<!DOCTYPE html>
+<!-- saved from url=(0116)http://127.0.0.1:5000/query?addr=%E9%A1%BA%E4%B9%89-%E9%A1%BA%E4%B9%89%E5%9F%8E-%E6%80%A1%E9%A6%A8%E5%AE%B6%E5%9B%AD -->
+<html lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>二手好房</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrapValidator.min.css"
+          rel="stylesheet">
+
+
+    <!-- Custom fonts for this template -->
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom page for this template -->
+    <link href="/static/css/zxf_page.css" rel="stylesheet">
+    <style>
+        .area-info {
+            margin-left: 5px;
+            padding-left: 5px;
+            font-size: 16px;
+            padding-bottom: 10px;
+            border-bottom: #ecf0f1 1px solid;
+        }
+
+        .info-line {
+            margin: 10px 0 55px 0;
+        }
+
+        .course-info span {
+            line-height: 37px;
+        }
+
+        .tj-header {
+            margin: 30px 0 10px;
+        }
+
+        .describe {
+            font-size: 15px;
+            color: #bdc3c7;
+        }
+
+        /* login */
+        .m-header {
+            padding: 10px 16px 2px;
+        }
+
+        .login_form {
+            margin-top: 150px;
+        }
+
+        .form-info {
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        .switch-info {
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 2px;
+        }
+
+        /* chanle */
+
+        .collection-line {
+            /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+            padding: 5px 0 25px;
+            margin: 20px 0;
+            background: #fff;
+            border-bottom: #ecf0f1 1px solid;
+        }
+
+        .collection-line-info {
+            font-size: 14px;
+        }
+
+        .collection-line-info .title {
+            margin-bottom: 4px;
+        }
+
+        .collection-line-info .title a {
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            line-height: 20px;
+        }
+
+        .collection-line-info .title a:hover {
+            color: #17a2b8;
+        }
+
+        .collection-line-info div {
+            height: 30px;
+        }
+
+        .collection-line-info .attribute-text {
+            font-weight: 400;
+            color: #394043;
+            letter-spacing: 0.4px;
+            opacity: 0.8;
+        }
+
+        .collection-line-info .info-text {
+            font-weight: 500;
+            color: #394043;
+            letter-spacing: 0.2px;
+        }
+
+        /* more */
+        .info-more {
+            text-align: center;
+        }
+
+        .info-more a {
+            font-weight: 400;
+            color: #17a2b8;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .info-more i {
+            padding: 65px 30px 65px 50px;
+            position: relative;
+        }
+
+        .info-more i:hover, .info-more i:focus {
+            color: #e74c3c;
+            opacity: 0;
+            animation: fadeIn 0.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes fadeIn {
+
+        .collection-line {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+
+        }
+        /* registe login*/
+        .register-login-line {
+            margin: 0;
+        }
+
+        /* page */
+        .my-page-line {
+            padding: 5px 0 2px;
+            margin: 10px 0 1px;
+            background: #fff;
+        }
+
+        /*hr*/
+        hr {
+            margin: 2px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top is-fixed" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="http://127.0.0.1:5000/">二手好房</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:5000/">首页</a>
+                </li>
+                <li class="nav-item" id="user">
+                    
+                        <!--没有处于登录装填下，才显示登录按钮-->
+                        <a class="nav-link" data-toggle="modal" data-target="#login" href="http://127.0.0.1:5000/query?addr=%E9%A1%BA%E4%B9%89-%E9%A1%BA%E4%B9%89%E5%9F%8E-%E6%80%A1%E9%A6%A8%E5%AE%B6%E5%9B%AD">登陆</a>
+                    
+                </li>
+
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url(&#39;/static/img/home-bg.jpg&#39;)">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>二手好房</h1>
+                    <span class="subheading">给您推荐优质房源</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+
+    <!--当前城市-->
+    <div class="row info-line">
+        <!-- 模块1标题 -->
+        <div class="col-lg-12 tj-header">
+            <h3>为你为家</h3>
+            <div class="describe">
+                <span>为您精准定位，当前城市房源信息</span>
+                <span class="float-right"><a href="http://127.0.0.1:5000/query?addr=%E9%A1%BA%E4%B9%89-%E9%A1%BA%E4%B9%89%E5%9F%8E-%E6%80%A1%E9%A6%A8%E5%AE%B6%E5%9B%AD#" style="color: #17a2b8; padding-right: 5px"></a></span>
+            </div>
+        </div>
+        <!-- 模块1信息展示 -->
+        <div class="collection col-lg-10">
+            <div id="fill-data" class="1">
+
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/111872"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/111872">舒适,温馨,大气,现代于一身的...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">99平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4700人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3900</span>
+                                <span><a href="http://127.0.0.1:5000/house/111872"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/111862"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/111862">怡馨家园 精装一居 家电齐全 ...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">50平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 186人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;2800</span>
+                                <span><a href="http://127.0.0.1:5000/house/111862"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/112294"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/112294">怡馨家园~3居室~中楼层~电梯...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">100平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室2厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1615人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4500</span>
+                                <span><a href="http://127.0.0.1:5000/house/112294"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/111693"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/111693">诚信房源,价格合理,信息图片真...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">75平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 580人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4200</span>
+                                <span><a href="http://127.0.0.1:5000/house/111693"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/101722"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/101722">怡馨家园 诚心出租 精装2居室...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">80平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1300人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3500</span>
+                                <span><a href="http://127.0.0.1:5000/house/101722"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/100451"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/100451">怡馨家园 电梯精装一居 家电齐...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">73平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4523人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;2700</span>
+                                <span><a href="http://127.0.0.1:5000/house/100451"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/100826"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/100826">顺义怡馨家园 电梯一居 家电齐...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">46平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室0厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 5520人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;2800</span>
+                                <span><a href="http://127.0.0.1:5000/house/100826"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/100600"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/100600">怡馨家园 真实照片,三居室,家...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">115平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室2厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1865人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4900</span>
+                                <span><a href="http://127.0.0.1:5000/house/100600"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/101276"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/101276">怡馨家园 精装大一居 业主 诚...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">55平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 135人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3200</span>
+                                <span><a href="http://127.0.0.1:5000/house/101276"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/101315"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/101315">怡馨家园 精装电梯房 次卧 双...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">10平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 354人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;1100</span>
+                                <span><a href="http://127.0.0.1:5000/house/101315"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/101164"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/101164">怡馨家园~交通便利~拎包入住~...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">77平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4876人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3800</span>
+                                <span><a href="http://127.0.0.1:5000/house/101164"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/83724"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/83724">怡馨家园 电梯精装一居 家电齐...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">73平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1825人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;2700</span>
+                                <span><a href="http://127.0.0.1:5000/house/83724"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/111745"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/111745">怡馨家园,干净清爽3室 ,看房...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">117平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4306人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;5500</span>
+                                <span><a href="http://127.0.0.1:5000/house/111745"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/101693"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/101693">怡馨家园电梯精装一居家电齐全随...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">74平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 674人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;2700</span>
+                                <span><a href="http://127.0.0.1:5000/house/101693"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/83279"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/83279">怡馨家园~正规2居~4000~...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">92平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝东</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 36人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4000</span>
+                                <span><a href="http://127.0.0.1:5000/house/83279"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/83303"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/83303">诚信房源,价格合理,信息图片真...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">75平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 5121人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4200</span>
+                                <span><a href="http://127.0.0.1:5000/house/83303"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/101681"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/101681">真实图片,怡馨家园,家具家电全...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">43平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室0厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 3649人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3200</span>
+                                <span><a href="http://127.0.0.1:5000/house/101681"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/83613"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/83613">,精装修3100元,定有一款适...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">53平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4781人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3100</span>
+                                <span><a href="http://127.0.0.1:5000/house/83613"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/101375"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/101375">,精装修3100元,定有一款适...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">53平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4853人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3100</span>
+                                <span><a href="http://127.0.0.1:5000/house/101375"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/100294"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/100294">,精装修3100元,定有一款适...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">53平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 2人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3100</span>
+                                <span><a href="http://127.0.0.1:5000/house/100294"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/73460"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/73460">怡馨家园 电梯精装一居 家电齐...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">73平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4691人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;2700</span>
+                                <span><a href="http://127.0.0.1:5000/house/73460"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/73202"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/73202">怡馨家园 精装两居室 家电齐全...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">80平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4946人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3900</span>
+                                <span><a href="http://127.0.0.1:5000/house/73202"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/73559"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/73559">顺义城 良心价格+怡馨家园</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">18平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝东北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 2548人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;1190</span>
+                                <span><a href="http://127.0.0.1:5000/house/73559"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/73294"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/73294">怡馨家园 精装电梯房 家具家电...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">46平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室0厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 3810人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3300</span>
+                                <span><a href="http://127.0.0.1:5000/house/73294"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/73225"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/73225">真!!怡馨家园,价格低,房子好...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">80平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1145人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4200</span>
+                                <span><a href="http://127.0.0.1:5000/house/73225"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/73005"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/73005">怡馨家园 电梯精装楼一居室 价...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">71平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室0厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 2577人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3300</span>
+                                <span><a href="http://127.0.0.1:5000/house/73005"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/63514"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/63514">顺义城区 怡馨家园精装两居电梯...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">80平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4537人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4200</span>
+                                <span><a href="http://127.0.0.1:5000/house/63514"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/63066"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/63066">怡馨家园 精装两居家具家电全齐...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">95平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4020人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4200</span>
+                                <span><a href="http://127.0.0.1:5000/house/63066"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/63163"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/63163">怡馨家园 精装 两居室 家具电...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">80平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 3610人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3900</span>
+                                <span><a href="http://127.0.0.1:5000/house/63163"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/63180"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/63180">怡馨家园精装修房 家电齐全,随...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">90平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 72人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4000</span>
+                                <span><a href="http://127.0.0.1:5000/house/63180"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/63012"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/63012">顺义怡馨家园 简单装修 1室 ...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">46平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 3185人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3000</span>
+                                <span><a href="http://127.0.0.1:5000/house/63012"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/63360"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/63360">大社区,生活交通方便,怡馨家园...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">75平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 3283人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3600</span>
+                                <span><a href="http://127.0.0.1:5000/house/63360"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/63495"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/63495">怡馨家园 2室 4300元,随...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">80平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 2795人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4300</span>
+                                <span><a href="http://127.0.0.1:5000/house/63495"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/63170"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/63170">怡馨家园~正规2居~4000~...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">92平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝东</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 3568人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4000</span>
+                                <span><a href="http://127.0.0.1:5000/house/63170"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/73413"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/73413">怡馨家园:精装实干,小户型,有...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">54平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 5149人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3200</span>
+                                <span><a href="http://127.0.0.1:5000/house/73413"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/63011"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/63011">怡馨家园,精装修电梯房,正规2...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">80平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 5557人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4000</span>
+                                <span><a href="http://127.0.0.1:5000/house/63011"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/63203"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/63203">怡馨家园 精装朝南两居室 电梯...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">90平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4741人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4200</span>
+                                <span><a href="http://127.0.0.1:5000/house/63203"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/63171"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/63171">怡馨家园 正规三居室 随时入住...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">118平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 5482人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;5000</span>
+                                <span><a href="http://127.0.0.1:5000/house/63171"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/54043"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/54043">怡馨家园,干净清爽3室 ,看房...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">117平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 3418人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;5500</span>
+                                <span><a href="http://127.0.0.1:5000/house/54043"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/54094"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/54094">怡馨家园~正规2居~4000~...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">93平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝东</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 999人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4000</span>
+                                <span><a href="http://127.0.0.1:5000/house/54094"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/44954"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/44954">怡馨家园 精装三居两卫 家具家...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">117平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室2厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 3596人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;5000</span>
+                                <span><a href="http://127.0.0.1:5000/house/44954"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/53912"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/53912">怡馨家园 正规两居 标准 家具...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">90平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1455人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4300</span>
+                                <span><a href="http://127.0.0.1:5000/house/53912"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/53746"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/53746">怡馨家园 一居室 精装修 家电...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">54平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室0厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 3225人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3000</span>
+                                <span><a href="http://127.0.0.1:5000/house/53746"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/53587"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/53587">怡馨家园,电梯房,精装,南北通...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">80平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4345人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4000</span>
+                                <span><a href="http://127.0.0.1:5000/house/53587"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/44934"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/44934">顺义城 怡馨家园 交通便利 家...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">80平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 708人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4000</span>
+                                <span><a href="http://127.0.0.1:5000/house/44934"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/44827"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/44827">怡馨家园 精装一居 干净舒适 ...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">70平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 5131人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3300</span>
+                                <span><a href="http://127.0.0.1:5000/house/44827"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/27361"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/27361">顺义城区 怡馨家园 精装一居 ...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">63平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 685人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3800</span>
+                                <span><a href="http://127.0.0.1:5000/house/27361"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/63112"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/63112">怡馨家园精装两居 业主急租 看...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">80平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4953人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3400</span>
+                                <span><a href="http://127.0.0.1:5000/house/63112"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/45010"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/45010">怡馨家园精装大两居 顺义城区位...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">84平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室2厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 3620人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4000</span>
+                                <span><a href="http://127.0.0.1:5000/house/45010"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/27919"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/27919">怡馨家园,干净清爽3室 ,看房...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">117平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1180人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4800</span>
+                                <span><a href="http://127.0.0.1:5000/house/27919"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/27899"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/27899">,简单装修4500元,定有一款...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">94平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室2厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 2470人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4500</span>
+                                <span><a href="http://127.0.0.1:5000/house/27899"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/27769"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/27769">怡馨家园 精装合租次卧带电梯 ...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">10平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 906人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;1250</span>
+                                <span><a href="http://127.0.0.1:5000/house/27769"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/27941"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/27941">精装三居,家电齐全,交通便利,...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">114平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1634人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;5000</span>
+                                <span><a href="http://127.0.0.1:5000/house/27941"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/17629"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/17629">精装三居,家电齐全,交通便利,...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">118平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室2厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 2881人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;5000</span>
+                                <span><a href="http://127.0.0.1:5000/house/17629"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/45015"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/45015">推荐 怡馨家园 1室1厅1卫 ...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">57平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4017人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3000</span>
+                                <span><a href="http://127.0.0.1:5000/house/45015"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/44922"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/44922">怡馨家园 精装一居 家电家具齐...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">43平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 2918人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3200</span>
+                                <span><a href="http://127.0.0.1:5000/house/44922"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/17656"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/17656">怡馨家园 一居室 精装修 家电...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">54平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 2907人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3000</span>
+                                <span><a href="http://127.0.0.1:5000/house/17656"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/8961"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/8961">怡馨家园,干净清爽3室 ,看房...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">117平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 283人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;4800</span>
+                                <span><a href="http://127.0.0.1:5000/house/8961"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/17753"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/17753">顺义城区 怡馨家园 电梯房 一...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">43平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室0厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1309人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3000</span>
+                                <span><a href="http://127.0.0.1:5000/house/17753"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/8758"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/8758">怡馨家园 诚意出租 精装修 交...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">10平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 304人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;1240</span>
+                                <span><a href="http://127.0.0.1:5000/house/8758"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/8549"><img class="img-fluid img-box" src="./search_list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/8549">怡馨家园 精装一居 干净舒适 ...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">顺义-顺义城-怡馨家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">70平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+                                <div>
+                        <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4780人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3000</span>
+                                <span><a href="http://127.0.0.1:5000/house/8549"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+            </div>
+
+
+            <div class="row my-page-line">
+                <div class="col-lg-12 col-md-12 mx-auto">
+                    <div class="zxf_pagediv">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右边栏信息展示 -->
+        <div class="col-lg-3">
+            <div class="row">
+            </div>
+        </div>
+
+    </div>
+    <!--注册登录-->
+    <div class="row register-login-line">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <!-- 注册窗口 -->
+            <div id="register" class="modal fade login_form" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body m-header">
+                            <button class="close" data-dismiss="modal">
+                                <span>×</span>
+                            </button>
+                        </div>
+                        <div class="modal-title">
+                            <h1 class="text-center">注册</h1>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-group" id="registeform" action="http://127.0.0.1:5000/register" method="post">
+                                <div class="form-group">
+                                    <label for="" class="form-info">用户名</label>
+                                    <input class="form-control" name="username" type="text" placeholder="6-15位字母或数字">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="form-info">密码</label>
+                                    <input class="form-control" name="password" type="password" placeholder="至少6位字母或数字">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="form-info">再次输入密码</label>
+                                    <input class="form-control" name="confirmPassword" type="password" placeholder="至少6位字母或数字">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="form-info">邮箱</label>
+                                    <input class="form-control" name="email" type="email" placeholder="例如:123@123.com">
+                                </div>
+                                <div class="text-right">
+                                    <button class="btn btn-primary" id="registe-btn">提交</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                </div>
+                                <a href="http://127.0.0.1:5000/query?addr=%E9%A1%BA%E4%B9%89-%E9%A1%BA%E4%B9%89%E5%9F%8E-%E6%80%A1%E9%A6%A8%E5%AE%B6%E5%9B%AD" data-toggle="modal" data-dismiss="modal" data-target="#login" class="switch-info">已有账号？点我登录</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 登录窗口 -->
+            <div id="login" class="modal fade login_form">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body m-header">
+                            <button class="close" data-dismiss="modal">
+                                <span>×</span>
+                            </button>
+                        </div>
+                        <div class="modal-title">
+                            <h1 class="text-center">登录</h1>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-group" id="loginform" action="http://127.0.0.1:5000/login" method="post">
+                                <div class="form-group">
+                                    <label for="" class="form-info">用户名</label>
+                                    <input class="form-control" name="username" type="text" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="form-info">密码</label>
+                                    <input class="form-control" name="password" type="password" placeholder="">
+                                </div>
+                                <div class="text-right">
+                                    <button class="btn btn-primary" id="login-btn">登录</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                </div>
+                                <a href="http://127.0.0.1:5000/query?addr=%E9%A1%BA%E4%B9%89-%E9%A1%BA%E4%B9%89%E5%9F%8E-%E6%80%A1%E9%A6%A8%E5%AE%B6%E5%9B%AD" data-toggle="modal" data-dismiss="modal" data-target="#register" class="switch-info">还没有账号？点我注册</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<hr>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+
+
+                <p class="copyright text-muted">Copyright © 二手好房 2019</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/bootstrapValidator.min.js"></script>
+<script src="/static/js/login.js"></script>
+<script src="/static/js/zxf_page.js"></script>
+
+
+<!-- Custom scripts for this template -->
+<script src="/static/js/clean-blog.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

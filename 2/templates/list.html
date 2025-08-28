@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://127.0.0.1:5000/list/pattern/1 -->
+<html lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>二手好房</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!--    <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"-->
+<!--          rel="stylesheet">-->
+    <link href="/static/css/bootstrapValidator.min.css"
+          rel="stylesheet">
+
+
+    <!-- Custom fonts for this template -->
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom page for this template -->
+    <link href="/static/css/zxf_page.css" rel="stylesheet">
+    <style>
+        .area-info {
+            margin-left: 5px;
+            padding-left: 5px;
+            font-size: 16px;
+            padding-bottom: 10px;
+            border-bottom: #ecf0f1 1px solid;
+        }
+
+        .info-line {
+            margin: 10px 0 55px 0;
+        }
+
+        .course-info span {
+            line-height: 37px;
+        }
+
+        .tj-header {
+            margin: 30px 0 10px;
+        }
+
+        .describe {
+            font-size: 15px;
+            color: #bdc3c7;
+        }
+
+        /* login */
+        .m-header {
+            padding: 10px 16px 2px;
+        }
+
+        .login_form {
+            margin-top: 150px;
+        }
+
+        .form-info {
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        .switch-info {
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 2px;
+        }
+
+        /* chanle */
+
+        .collection-line {
+            /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+            padding: 5px 0 25px;
+            margin: 20px 0;
+            background: #fff;
+            border-bottom: #ecf0f1 1px solid;
+        }
+
+        .collection-line-info {
+            font-size: 14px;
+        }
+
+        .collection-line-info .title {
+            margin-bottom: 4px;
+        }
+
+        .collection-line-info .title a {
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            line-height: 20px;
+        }
+
+        .collection-line-info .title a:hover {
+            color: #17a2b8;
+        }
+
+        .collection-line-info div {
+            height: 30px;
+        }
+
+        .collection-line-info .attribute-text {
+            font-weight: 400;
+            color: #394043;
+            letter-spacing: 0.4px;
+            opacity: 0.8;
+        }
+
+        .collection-line-info .info-text {
+            font-weight: 500;
+            color: #394043;
+            letter-spacing: 0.2px;
+        }
+
+        /* more */
+        .info-more {
+            text-align: center;
+        }
+
+        .info-more a {
+            font-weight: 400;
+            color: #17a2b8;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .info-more i {
+            padding: 65px 30px 65px 50px;
+            position: relative;
+        }
+
+        .info-more i:hover, .info-more i:focus {
+            color: #e74c3c;
+            opacity: 0;
+            animation: fadeIn 0.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes fadeIn {
+
+        .collection-line {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+
+        }
+        /* registe login*/
+        .register-login-line {
+            margin: 0;
+        }
+
+        /* page */
+        .my-page-line {
+            padding: 5px 0 2px;
+            margin: 10px 0 1px;
+            background: #fff;
+        }
+
+        /*hr*/
+        hr {
+            margin: 2px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="http://127.0.0.1:5000/">二手好房</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:5000/">首页</a>
+                </li>
+
+                <li class="nav-item" id="user">
+                    
+                        <!--没有处于登录装填下，才显示登录按钮-->
+                        <a class="nav-link" data-toggle="modal" data-target="#login" href="http://127.0.0.1:5000/list/pattern/1">登录</a>
+                    
+                </li>
+
+                
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url(&#39;/static/img/home-bg.jpg&#39;)">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>二手好房</h1>
+                    <span class="subheading">给您推荐优质房源</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+
+    <!--当前城市-->
+    <div class="row info-line">
+        <!-- 模块1标题 -->
+        <div class="col-lg-12 tj-header">
+            <h3>为你为家</h3>
+            <div class="describe">
+                <span>为您精准定位，当前城市房源信息</span>
+                <span class="float-right"><a href="http://127.0.0.1:5000/list/pattern/1" style="color: #17a2b8; padding-right: 5px"></a></span>
+            </div>
+        </div>
+        <!-- 模块1信息展示 -->
+        <div class="collection col-lg-12 col-md-12">
+            <div id="fill-data" class="1">
+
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/113544"><img class="img-fluid img-box" src="./list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/113544">1石厂站,金安桥,六号线,,精...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">门头沟-双峪-石门营小区 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">15平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">距s1线石厂站约601米</span>
+                                </div>
+
+                                <div>
+                                <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1792人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;1200</span>
+                                <span><a href="http://127.0.0.1:5000/house/113544"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/113562"><img class="img-fluid img-box" src="./list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/113562">影人四季花园电梯洋房 没出租过...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">怀柔-怀柔-影人四季花园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">102平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室2厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+
+                                <div>
+                                <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;3000</span>
+                                <span><a href="http://127.0.0.1:5000/house/113562"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/113543"><img class="img-fluid img-box" src="./list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/113543">图片真实 无物业费 石门营新区...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">门头沟-双峪-门头沟小园村 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">19平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝东北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">距s1线小园站约342米</span>
+                                </div>
+
+                                <div>
+                                <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 3980人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;1350</span>
+                                <span><a href="http://127.0.0.1:5000/house/113543"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/113437"><img class="img-fluid img-box" src="./list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/113437">牡丹园 健德门 北太平庄 花园...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">门头沟-大峪-月季园二区 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">100平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+
+                                <div>
+                                <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1130人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;8300</span>
+                                <span><a href="http://127.0.0.1:5000/house/113437"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/113542"><img class="img-fluid img-box" src="./list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/113542">装修清新 装修温馨 8到地铁 ...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">门头沟-双峪-门头沟小园村 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">15平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">3室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝东南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">距s1线小园站约342米</span>
+                                </div>
+
+                                <div>
+                                <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1504人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;1100</span>
+                                <span><a href="http://127.0.0.1:5000/house/113542"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/113541"><img class="img-fluid img-box" src="./list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/113541">良心价格 包物业费 0 惠润嘉...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">门头沟-大峪-惠润嘉园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">20平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">4室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝西南</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+
+                                <div>
+                                <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 557人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;1400</span>
+                                <span><a href="http://127.0.0.1:5000/house/113541"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/113433"><img class="img-fluid img-box" src="./list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/113433">迎晖北苑~正规2居~2600~...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">门头沟-双峪-迎晖北苑 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">61平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">2室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+
+                                <div>
+                                <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 1369人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;2600</span>
+                                <span><a href="http://127.0.0.1:5000/house/113433"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/113378"><img class="img-fluid img-box" src="./list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/113378">蓝龙胜境嘉苑 简单1居室 20...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">门头沟-城子-蓝龙胜境嘉苑 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">42平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室0厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝西</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+
+                                <div>
+                                <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 2674人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;2000</span>
+                                <span><a href="http://127.0.0.1:5000/house/113378"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/113404"><img class="img-fluid img-box" src="./list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/113404">惠民二区 1室 2700元,随...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">门头沟-大峪-惠民家园 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">57平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">1室1厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝西</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+
+                                <div>
+                                <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 4864人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;2700</span>
+                                <span><a href="http://127.0.0.1:5000/house/113404"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                    <div class="row collection-line">
+
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="http://127.0.0.1:5000/house/113405"><img class="img-fluid img-box" src="./list_files/house-bg1.jpg" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                <div class="title">
+                                    <span><a href="http://127.0.0.1:5000/house/113405">丽景长安 4室 7500元,随...</a></span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源地址：</span>
+                                    &nbsp;
+                                    <span class="info-text">门头沟-双峪-丽景长安 </span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">建筑面积：</span>
+                                    &nbsp;
+                                    <span class="info-text">144平方米</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源户型：</span>
+                                    &nbsp;
+                                    <span class="info-text">4室2厅</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">房源朝向：</span>
+                                    &nbsp;
+                                    <span class="info-text">朝南北</span>
+                                </div>
+                                <div>
+                                    <span class="attribute-text">交通条件：</span>
+                                    &nbsp;
+                                    <span class="info-text">暂无信息！</span>
+                                </div>
+
+                                <div>
+                                <span class="attribute-text"><i class="fa fa-heart" aria-hidden="true" style="color: #e74c3c"></i> 3942人浏览过</span>
+                                    &nbsp;
+                                    <span class="info-text"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 mx-auto">
+                            <div class="info-more">
+                                <span class="info-text" style="color: #e74c3c">￥&nbsp;7500</span>
+                                <span><a href="http://127.0.0.1:5000/house/113405"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+                    </div>
+                
+            </div>
+
+
+            <div class="row my-page-line">
+                <div class="col-lg-12 col-md-12 mx-auto">
+                    <div class="zxf_pagediv"><span class="disabled">上一页</span><span class="current">1</span><a href="javascript:;" class="zxfPagenum nextpage">2</a><a href="javascript:;" class="zxfPagenum">3</a><a href="javascript:;" class="zxfPagenum">4</a><a href="javascript:;" class="zxfPagenum">5</a><a href="javascript:;" class="zxfPagenum">6</a><a href="javascript:;" class="zxfPagenum">7</a><a href="javascript:;" class="zxfPagenum">8</a><a href="javascript:;" class="zxfPagenum">9</a><span>...</span><a href="javascript:;" class="nextbtn">下一页</a><span>共<b>11332</b>页，</span><span>到第<input type="number" class="zxfinput" value="">页</span><span class="zxfokbtn">确定</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右边栏信息展示 -->
+        <div class="col-lg-2">
+            <div class="row">
+            </div>
+        </div>
+
+    </div>
+    <!--注册登录-->
+    <div class="row register-login-line">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <!-- 注册窗口 -->
+            <div id="register" class="modal fade login_form" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body m-header">
+                            <button class="close" data-dismiss="modal">
+                                <span>×</span>
+                            </button>
+                        </div>
+                        <div class="modal-title">
+                            <h1 class="text-center">注册</h1>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-group" id="registeform" action="http://127.0.0.1:5000/register" method="post">
+                                <div class="form-group">
+                                    <label for="" class="form-info">用户名</label>
+                                    <input class="form-control" name="username" type="text" placeholder="6-15位字母或数字">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="form-info">密码</label>
+                                    <input class="form-control" name="password" type="password" placeholder="至少6位字母或数字">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="form-info">再次输入密码</label>
+                                    <input class="form-control" name="confirmPassword" type="password" placeholder="至少6位字母或数字">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="form-info">邮箱</label>
+                                    <input class="form-control" name="email" type="email" placeholder="例如:123@123.com">
+                                </div>
+                                <div class="text-right">
+                                    <button class="btn btn-primary" id="registe-btn">提交</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                </div>
+                                <a href="http://127.0.0.1:5000/list/pattern/1" data-toggle="modal" data-dismiss="modal" data-target="#login" class="switch-info">已有账号？点我登录</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 登录窗口 -->
+            <div id="login" class="modal fade login_form">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body m-header">
+                            <button class="close" data-dismiss="modal">
+                                <span>×</span>
+                            </button>
+                        </div>
+                        <div class="modal-title">
+                            <h1 class="text-center">登录</h1>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-group" id="loginform" action="http://127.0.0.1:5000/login" method="post">
+                                <div class="form-group">
+                                    <label for="" class="form-info">用户名</label>
+                                    <input class="form-control" name="username" type="text" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="form-info">密码</label>
+                                    <input class="form-control" name="password" type="password" placeholder="">
+                                </div>
+                                <div class="text-right">
+                                    <button class="btn btn-primary" id="login-btn">登录</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                </div>
+                                <a href="http://127.0.0.1:5000/list/pattern/1" data-toggle="modal" data-dismiss="modal" data-target="#register" class="switch-info">还没有账号？点我注册</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<hr>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+
+
+                <p class="copyright text-muted">Copyright © 二手好房 2019</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/bootstrapValidator.min.js"></script>
+<script src="/static/js/login.js"></script>
+<script src="/static/js/zxf_page.js"></script>
+
+
+<!-- Custom scripts for this template -->
+<script src="/static/js/clean-blog.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".zxf_pagediv").createPage({
+            pageNum: 11332,  // 总的页码数
+            
+            current: Number($('#fill-data').attr('class')),  // 当前的页码
+            backfun: function (e) {  // 回调函数
+                console.log(e['current']);  // e['current] 是单击更多房源链接文本时候的页码
+                var n_current = e['current'];
+                // 获取当前页的地址
+                var part_path = window.location.pathname;
+                var path_list = part_path.split('/');
+                // 将单击下一页的页码替换原来的页码
+                path_list[3] = n_current;
+                // 获取重新拼接的新URL地址
+                var n_url = path_list.join('/');
+                console.log(n_url);
+                // 重新加载
+                window.location.replace(n_url);
+            }
+        });
+    });
+</script>
+
+
+
+</body></html>
