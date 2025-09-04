@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>检索结果 - 二手好房</title>
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<!-- 顶部导航菜单 -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top is-fixed" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('pages.index') }}">二手好房</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('pages.index') }}">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('pages.search_page') }}">房源检索</a>
+                </li>
+                {% if user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('pages.user_page', username=user.name) }}">{{ user.name }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="logout" href="#">退出登录</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item" id="user">
+                        <a class="nav-link" data-toggle="modal" data-target="#login" href="#">登录</a>
+                    </li>
+                     <li class="nav-item" id="register_button">
+                        <a class="nav-link" data-toggle="modal" data-target="#register" href="#">注册</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>检索结果</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row" style="margin-top: 30px;">
+        {% if pagination and pagination.items %}
+            {% for house in pagination.items %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <a href="{{ url_for('pages.house_detail', house_id=house.id) }}"><img class="card-img-top" src="{{ url_for('static', filename='img/house-bg1.jpg') }}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="{{ url_for('pages.house_detail', house_id=house.id) }}">{{ house.title }}</a>
+                        </h4>
+                        <h5>¥{{ house.price }}</h5>
+                        <p class="card-text">{{ house.region }} - {{ house.address }}</p>
+                        <p class="card-text">{{ house.rooms }} | {{ house.area }} | {{ house.rent_type }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12 text-center">
+                <p style="font-size: 18px; color: #777; margin-top: 50px;">抱歉，没有找到符合条件的房源。</p>
+                <a href="{{ url_for('pages.search_page') }}" class="btn btn-primary mt-3">返回重新检索</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- 分页导航 -->
+    {% if pagination and pagination.pages > 1 %}
+    <div class="row">
+        <div class="col-lg-12">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <!-- 上一页 -->
+                    <li class="page-item {% if pagination.page <= 1 %}disabled{% endif %}">
+                        <a class="page-link" href="{{ url_for('api.search_houses', page=pagination.page - 1, **pagination_args) }}">上一页</a>
+                    </li>
+
+                    <!-- 页码 -->
+                    {% for p in range(start_page, end_page) %}
+                        {% if p == pagination.page %}
+                        <li class="page-item active">
+                            <a class="page-link" href="#">{{ p }}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ url_for('api.search_houses', page=p, **pagination_args) }}">{{ p }}</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    <!-- 下一页 -->
+                    <li class="page-item {% if pagination.page >= pagination.pages %}disabled{% endif %}">
+                        <a class="page-link" href="{{ url_for('api.search_houses', page=pagination.page + 1, **pagination_args) }}">下一页</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- 登录和注册的模态框 -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">登录</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/api/login" method="post">
+                    <div class="form-group">
+                        <label for="username">用户名</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">登录</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <!-- 注册模态框内容 -->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" style="padding: 10px 16px 2px;"><button class="close" data-dismiss="modal"><span>×</span></button></div>
+            <div class="modal-title"><h1 class="text-center">注册</h1></div>
+            <div class="modal-body">
+                <form class="form-group" id="registeform" action="/api/register" method="post">
+                    <div class="form-group"><label>用户名</label><input class="form-control" name="username" type="text" placeholder="6-15位字母或数字"></div>
+                    <div class="form-group"><label>密码</label><input class="form-control" name="password" type="password" placeholder="至少6位字母或数字"></div>
+                    <div class="form-group"><label>再次输入密码</label><input class="form-control" name="confirmPassword" type="password" placeholder="至少6位字母或数字"></div>
+                    <div class="form-group"><label>邮箱</label><input class="form-control" name="email" type="email" placeholder="例如:123@123.com"></div>
+                    <div class="text-right"><button class="btn btn-primary" id="registe-btn">提交</button><button class="btn btn-danger" data-dismiss="modal">取消</button></div>
+                    <a href="#" data-toggle="modal" data-dismiss="modal" data-target="#login">已有账号？点我登录</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrapValidator.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+<script src="{{ url_for('static', filename='js/clean-blog.min.js') }}"></script>
+<script>
+$(document).ready(function () {
+    // 登出功能
+    $("#logout").on('click', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/api/logout',
+            type: 'get',
+            dataType: 'json',
+            success: function (res) {
+                if (res.valid == '1') {
+                    alert(res.msg);
+                    window.location.reload();
+                } else {
+                    alert(res.msg);
+                }
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
+

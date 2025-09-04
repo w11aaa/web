@@ -107,3 +107,11 @@ def user_page(username):
         seen_houses = House.query.filter(House.id.in_(seen_ids)).all()
 
     return render_template('user_page.html', user=user, collected_houses=collected_houses, seen_houses=seen_houses)
+
+@pages.route('/search')
+def search_page():
+    """渲染房源检索页面"""
+    user = None
+    if 'user_name' in session:
+        user = User.query.filter(User.name == session.get('user_name')).first()
+    return render_template('search.html', user=user)

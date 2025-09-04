@@ -1,9 +1,10 @@
-from flask import request, jsonify, redirect, url_for, session, Blueprint
+from flask import request, jsonify, redirect, url_for, session, Blueprint, render_template
 from settings import app, db
 from models import User, House
 from sqlalchemy import or_, func, and_
 import re
 import time
+from types import SimpleNamespace
 
 # 1. 从页面路由文件中导入 'pages' 蓝图
 from index_page import pages
@@ -31,7 +32,15 @@ def clean_price(price_str):
     """从价格字符串（如 '3500元/月'）中提取数值"""
     if not price_str:
         return 0
-    match = re.search(r'(\d+(\.\d+)?)', str(price_str))
+    match = re.search(r'(\d+)', str(price_str))
+    return float(match.group(1)) if match else 0
+
+
+def parse_area(area_str):
+    """从面积字符串 (如 '75平米') 中提取数值"""
+    if not area_str:
+        return 0
+    match = re.search(r'(\d+)', str(area_str))
     return float(match.group(1)) if match else 0
 
 
@@ -42,14 +51,13 @@ def build_location_query_filter(region_str):
     parts = region_str.split('-')
     region_part = parts[0].replace('区', '') if len(parts) > 0 else ''
     block_part = parts[1] if len(parts) > 1 else ''
-    address_part = parts[2] if len(parts) > 2 else ''  # 新增：处理第三部分（小区）
+    address_part = parts[2] if len(parts) > 2 else ''
 
     conditions = []
     if region_part:
         conditions.append(House.region.like(f"%{region_part}%"))
     if block_part:
         conditions.append(House.block.like(f"%{block_part}%"))
-    # 如果有小区信息，则加入查询条件，使定位更精确
     if address_part:
         conditions.append(House.address.like(f"%{address_part}%"))
 
@@ -58,7 +66,94 @@ def build_location_query_filter(region_str):
 
 # --- 3. 定义 'api' 蓝图的所有路由 ---
 
-# --- 搜索功能API (已升级) ---
+# --- 房源检索API (已升级，支持分页) ---
+@api.route('/search', methods=['GET'])
+def search_houses():
+    # 1. 获取所有筛选条件 (从 GET 请求的 URL 参数中获取)
+    page = request.args.get('page', 1, type=int)
+    keyword = request.args.get('keyword')
+    region = request.args.get('region')
+    rooms = request.args.get('rooms')
+    rent_type = request.args.get('rent_type')
+    area_range_str = request.args.get('area')
+    price_range_str = request.args.get('price')
+
+    # 2. 构建基础数据库查询
+    query = House.query
+    if keyword:
+        search_term = f'%{keyword}%'
+        query = query.filter(or_(
+            House.title.like(search_term),
+            House.address.like(search_term),
+            House.block.like(search_term)
+        ))
+    if region:
+        search_term = f'%{region}%'
+        query = query.filter(House.region.like(search_term))
+
+    if rooms:
+        if rooms == '4室及以上':
+            query = query.filter(House.rooms.like('4室%') | House.rooms.like('5室%') | House.rooms.like('6室%'))
+        else:
+            query = query.filter(House.rooms == rooms)
+
+    if rent_type:
+        query = query.filter(House.rent_type == rent_type)
+
+    # 【注意】由于面积和价格是文本，无法在数据库层面高效分页。
+    # 我们先获取所有符合主要条件的房源。
+    initial_results = query.all()
+
+    # 3. 在内存中进行价格和面积的二次筛选
+    final_results = []
+    min_area, max_area = map(int, area_range_str.split('-')) if area_range_str else (None, None)
+    min_price, max_price = map(int, price_range_str.split('-')) if price_range_str else (None, None)
+
+    for house in initial_results:
+        area_ok = not min_area or (min_area <= parse_area(house.area) < max_area if parse_area(house.area) else False)
+        price_ok = not min_price or (
+            min_price <= clean_price(house.price) < max_price if clean_price(house.price) else False)
+        if area_ok and price_ok:
+            final_results.append(house)
+
+    # 4. 手动对内存中的结果进行分页
+    per_page = 9
+    total_items = len(final_results)
+    start = (page - 1) * per_page
+    end = start + per_page
+    items_on_page = final_results[start:end]
+
+    # 创建一个简单的分页对象，模拟 Flask-SQLAlchemy 的分页对象
+    from math import ceil
+    pagination = SimpleNamespace(
+        items=items_on_page,
+        page=page,
+        per_page=per_page,
+        total=total_items,
+        pages=ceil(total_items / per_page)
+    )
+
+    user = User.query.filter(User.name == session.get('user_name')).first() if 'user_name' in session else None
+
+    # 【修复】创建一个干净的参数字典用于分页链接，移除旧的 'page' 参数
+    pagination_args = request.args.copy()
+    pagination_args.pop('page', None)
+
+    # Calculate the page range for the template
+    start_page = pagination.page
+    end_page = min(pagination.page + 6, pagination.pages + 1)
+
+    return render_template(
+        'search_results.html',
+        pagination=pagination,
+        user=user,
+        pagination_args=pagination_args,
+        start_page=start_page,
+        end_page=end_page
+    )
+
+
+# --- 搜索功能API (首页搜索框使用) ---
 @api.route('/search/recommendations')
 def search_recommendations():
     """获取热门推荐房源（用于点击搜索框时显示）"""
@@ -71,7 +166,7 @@ def search_recommendations():
 def search_keyword():
     """根据关键词实时搜索房源"""
     keyword = request.form.get('kw', '')
-    info_type = request.form.get('info', '')  # '地区搜索' 或 '户型搜索'
+    info_type = request.form.get('info', '')
 
     if not keyword:
         return jsonify(code=0, msg='关键词为空')
@@ -242,7 +337,6 @@ def get_pie_data(region):
 def get_column_data(region):
     print(f"--- [柱状图] 正在查询复合区域: {region} ---")
     location_filter = build_location_query_filter(region)
-    # 【修复】按 address (小区) 分组, 而不是 block (街道)
     top_communities_subquery = db.session.query(
         House.address, func.count(House.id).label('house_count')
     ).filter(
@@ -256,7 +350,6 @@ def get_column_data(region):
         return jsonify(data={'x_axis': [], 'y_axis': []})
 
     community_names = [c.address for c in top_communities]
-    # 【修复】查询条件应包含 location_filter 以确保数据范围正确
     houses_in_top_communities = db.session.query(House).filter(
         location_filter, House.address.in_(community_names)
     ).all()
@@ -281,14 +374,10 @@ def get_broken_line_data(region):
     room_types = ['2室1厅', '3室1厅']
     series = []
 
-    # 【修复】移除30天的时间限制, 以适应旧数据
-    # thirty_days_ago = int(time.time()) - 30 * 24 * 60 * 60
-
     for room_type in room_types:
         query = db.session.query(House.price).filter(
             location_filter,
             House.rooms == room_type
-            # House.publish_time > thirty_days_ago
         ).order_by(House.publish_time.asc()).all()
 
         print(f"[折线图] 查询到 '{room_type}' {len(query)} 条记录")
@@ -309,8 +398,9 @@ def get_broken_line_data(region):
 
 # --- 4. 最后，将配置完成的蓝图注册到主应用 ---
 app.register_blueprint(pages)
-app.register_blueprint(api, url_prefix='/api')  # 给所有API路由添加 /api 前缀
+app.register_blueprint(api, url_prefix='/api')
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 

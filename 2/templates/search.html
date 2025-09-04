@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>房源检索 - 二手好房</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon"/>
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
+    <style>
+        body {
+            font-size: 15px;
+        }
+        .masthead {
+            height: 250px;
+            min-height: 250px;
+        }
+        .site-heading {
+            padding-top: 60px !important;
+            padding-bottom: 40px;
+        }
+        .site-heading h1 {
+            font-size: 45px;
+        }
+        .search-form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+        }
+        .btn-primary {
+            background-color: #0085A1;
+            border-color: #0085A1;
+        }
+        .filter-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .filter-label {
+            font-weight: bold;
+            margin-right: 15px;
+            white-space: nowrap;
+        }
+        .filter-options a {
+            color: #333;
+            padding: 5px 12px;
+            margin: 0 5px 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .filter-options a:hover {
+            background-color: #f5f5f5;
+            border-color: #ccc;
+        }
+        .filter-options a.active {
+            background-color: #0085A1;
+            color: #fff;
+            border-color: #0085A1;
+        }
+        #keyword-input {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 顶部导航菜单 -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top is-fixed" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('pages.index') }}">二手好房</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('pages.index') }}">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('pages.search_page') }}">房源检索</a>
+                </li>
+                {% if user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('pages.user_page', username=user.name) }}">{{ user.name }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="logout" href="#">退出登录</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item" id="user">
+                        <a class="nav-link" data-toggle="modal" data-target="#login" href="#">登录</a>
+                    </li>
+                     <li class="nav-item" id="register_button">
+                        <a class="nav-link" data-toggle="modal" data-target="#register" href="#">注册</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>房源检索</h1>
+                    <span class="subheading">通过多种条件精确查找您的理想房源</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-md-10 mx-auto">
+            <div class="search-form-container">
+                <!-- 修改 action 和 method 以支持分页 -->
+                <form id="search-form" action="{{ url_for('api.search_houses') }}" method="GET">
+
+                    <!-- Keyword Input -->
+                    <div class="filter-group">
+                        <label for="keyword-input" class="filter-label">关键词：</label>
+                        <input type="text" class="form-control" id="keyword-input" name="keyword" placeholder="输入小区、地址或标题中的关键词">
+                    </div>
+
+                    <!-- Region Filter -->
+                    <div class="filter-group">
+                        <span class="filter-label">区域：</span>
+                        <div class="filter-options" data-group="region">
+                            <a href="#" class="active" data-value="">所有区域</a>
+                            <a href="#" data-value="通州">通州</a>
+                            <a href="#" data-value="朝阳">朝阳</a>
+                            <a href="#" data-value="密云">密云</a>
+                            <a href="#" data-value="大兴">大兴</a>
+                            <a href="#" data-value="顺义">顺义</a>
+                            <a href="#" data-value="房山">房山</a>
+                        </div>
+                        <input type="hidden" name="region" value="">
+                    </div>
+
+                    <!-- Area Filter -->
+                    <div class="filter-group">
+                        <span class="filter-label">面积：</span>
+                        <div class="filter-options" data-group="area">
+                            <a href="#" class="active" data-value="">所有面积</a>
+                            <a href="#" data-value="0-50">50㎡以下</a>
+                            <a href="#" data-value="50-70">50-70㎡</a>
+                            <a href="#" data-value="70-90">70-90㎡</a>
+                            <a href="#" data-value="90-120">90-120㎡</a>
+                            <a href="#" data-value="120-9999">120㎡以上</a>
+                        </div>
+                        <input type="hidden" name="area" value="">
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="filter-group">
+                        <span class="filter-label">金额：</span>
+                        <div class="filter-options" data-group="price">
+                            <a href="#" class="active" data-value="">所有金额</a>
+                            <a href="#" data-value="0-3000">3000元以下</a>
+                            <a href="#" data-value="3000-5000">3000-5000元</a>
+                            <a href="#" data-value="5000-8000">5000-8000元</a>
+                            <a href="#" data-value="8000-12000">8000-12000元</a>
+                            <a href="#" data-value="12000-999999">12000元以上</a>
+                        </div>
+                        <input type="hidden" name="price" value="">
+                    </div>
+
+                    <!-- Rooms Filter -->
+                    <div class="filter-group">
+                        <span class="filter-label">户型：</span>
+                        <div class="filter-options" data-group="rooms">
+                            <a href="#" class="active" data-value="">所有户型</a>
+                            <a href="#" data-value="1室1厅">1室1厅</a>
+                            <a href="#" data-value="2室1厅">2室1厅</a>
+                            <a href="#" data-value="3室1厅">3室1厅</a>
+                            <a href="#" data-value="3室2厅">3室2厅</a>
+                            <a href="#" data-value="4室1厅">4室1厅</a>
+                            <a href="#" data-value="4室及以上">4室以上</a>
+                        </div>
+                        <input type="hidden" name="rooms" value="">
+                    </div>
+
+                    <!-- Rent Type Filter -->
+                    <div class="filter-group">
+                        <span class="filter-label">租住类型：</span>
+                        <div class="filter-options" data-group="rent_type">
+                            <a href="#" class="active" data-value="">所有类型</a>
+                            <a href="#" data-value="整租">整租</a>
+                            <a href="#" data-value="合租">合租</a>
+                        </div>
+                        <input type="hidden" name="rent_type" value="">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block mt-4">点击检索</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/clean-blog.min.js') }}"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterGroups = document.querySelectorAll('.filter-options');
+
+    filterGroups.forEach(group => {
+        const links = group.querySelectorAll('a');
+        const hiddenInput = group.nextElementSibling; // The hidden input right after the div
+
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Set value to hidden input
+                hiddenInput.value = this.dataset.value;
+
+                // Update active class
+                links.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    });
+});
+</script>
+
+</body>
+</html>
+

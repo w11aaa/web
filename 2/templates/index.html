@@ -228,6 +228,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('pages.index') }}">首页</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('pages.search_page') }}">房源检索</a>
+                </li>
                 {% if user %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('pages.user_page', username=user.name) }}">{{ user.name }}</a>

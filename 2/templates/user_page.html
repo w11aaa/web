@@ -506,33 +506,35 @@ $("#del").on('click', function () {
         alert('您还没有登录!');
     }
 });
-    //  取消收藏
-    $(".collect_off").on('click', function () {
-        var hid = this.id;
-        var name = $.cookie('name');
-        var $span = $(this);
-        if (name) {
-            $.ajax({
-                url: "/api/collect_off",
-                type: 'post',
-                data: {
-                    house_id: hid,
-                    user_name: name,
-                },
-                dataType: 'json',
-                success: function (resp) {
-                    if (resp["valid"] == '1') {
-                        alert(resp["msg"]);
-                        $span.parent().remove();
-                    } else {
-                        alert(resp["msg"]);
-                    }
+    // 取消收藏（修复登录状态判断）
+$(".collect_off").on('click', function () {
+    var hid = this.id;
+    // 从页面元素获取当前登录用户名（由后端模板渲染）
+    var name = "{{ user.name if user else '' }}";
+    var $span = $(this);
+
+    if (name) {  // 直接判断用户名是否存在
+        $.ajax({
+            url: "/api/collect_off",
+            type: 'post',
+            data: {
+                house_id: hid,
+                user_name: name,
+            },
+            dataType: 'json',
+            success: function (resp) {
+                if (resp["valid"] == '1') {
+                    alert(resp["msg"]);
+                    $span.parent().remove();
+                } else {
+                    alert(resp["msg"]);
                 }
-            })
-        } else {
-            alert('您还没有登录!')
-        }
-    });
+            }
+        })
+    } else {
+        alert('您还没有登录!')
+    }
+});
 
 
     // 登出功能
