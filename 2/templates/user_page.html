@@ -1,28 +1,22 @@
 <!DOCTYPE html>
-<!-- saved from url=(0033)http://127.0.0.1:5000/user/itcast -->
 <html lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <title>二手好房</title>
 
-     <!-- Bootstrap core CSS -->
-    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <!-- Custom fonts for this template -->
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="/static/css/clean-blog.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/clean-blog.min.css') }}" rel="stylesheet">
 
 
     <style>
 
-        <!--
-        -->
         #mainNav {
             border-bottom: 1px solid #ecf0f1;
             background: transparent;
@@ -303,10 +297,9 @@
 
 <body>
 
-<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="http://127.0.0.1:5000/">二手好房</a>
+        <a class="navbar-brand" href="{{ url_for('pages.index') }}">二手好房</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars"></i>
@@ -316,46 +309,36 @@
 
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:5000/">首页</a>
+                    <a class="nav-link" href="{{ url_for('pages.index') }}">首页</a>
                 </li>
-
-
+                {% if user %}
                 <li class="nav-item" id="user">
-                    
-                    <!--处于登录状态-->
-                    <!--用户名、退出登录-->
-                    <a id="u_name" class="nav-link" href="http://127.0.0.1:5000/user/itcast">itcast</a>
-                    
+                    <a id="u_name" class="nav-link" href="{{ url_for('pages.user_page', username=user.name) }}">{{ user.name }}</a>
                 </li>
-
-                
                 <li class="nav-item">
-                    <a class="nav-link" id="logout" href="http://127.0.0.1:5000/user/itcast">退出登录</a>
+                    <a class="nav-link" id="logout" href="#">退出登录</a>
                 </li>
-                
-
-
+                {% endif %}
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- Page Header -->
 <header class="masthead no-margin-bottom" style="background-color: #fff; min-height: 500px">
     <div class="overlay"></div>
     <div class="container">
         <div class="row ">
             <div class="col-lg-8 col-md-8 mx-auto detail-body">
                 <ul class="nav nav-tabs" style="margin:10px 0 30px">
-                    <li class="active chanle1"><a href="http://127.0.0.1:5000/user/itcast#userinfo">账号信息</a></li>
-                    <li class="chanle2"><a href="http://127.0.0.1:5000/user/itcast#collections">房源收藏</a></li>
+                    <li class="active chanle1"><a href="#userinfo">账号信息</a></li>
+                    <li class="chanle2"><a href="#collections">房源收藏</a></li>
                 </ul>
                 <div class="user-info">
-                    <input value="itcast" id="n-data" style="display: none">
+                    <input value="{{ user.name }}" id="n-data" style="display: none">
                     <div class="row">
                         <div class="col-lg-8 c-1">
                             <span>昵称：</span>
-                            <span class="nkname">itcast</span>
+                            <span class="nkname">{{ user.name }}</span>
                         </div>
                         <div class="col-lg-4">
                             <button class="btn-info c-2" id="btn-name"><i class="fa fa-pencil-square-o" aria-hidden="true"> 编辑</i>
@@ -363,11 +346,11 @@
                         </div>
                     </div>
 
-                    <input value="None" id="a-data" style="display: none">
+                    <input value="{{ user.addr or 'None' }}" id="a-data" style="display: none">
                     <div class="row">
                         <div class="col-lg-8 c-1">
                             <span>住址：</span>
-                            <span class="nkaddr">None</span>
+                            <span class="nkaddr">{{ user.addr or 'None' }}</span>
                         </div>
                         <div class="col-lg-4">
                             <button class="btn-info c-2" id="btn-addr"><i class="fa fa-pencil-square-o" aria-hidden="true"> 编辑</i>
@@ -375,11 +358,11 @@
                         </div>
                     </div>
 
-                    <input value="123456" id="p-data" style="display: none">
+                    <input value="{{ user.password }}" id="p-data" style="display: none">
                     <div class="row">
                         <div class="col-lg-8 c-1">
                             <span>密码：</span>
-                            <span class="nkpd">123456</span>
+                            <span class="nkpd">******</span>
                         </div>
                         <div class="col-lg-4">
                             <button class="btn-info c-2" id="btn-pd"><i class="fa fa-pencil-square-o" aria-hidden="true"> 编辑</i>
@@ -387,11 +370,11 @@
                         </div>
                     </div>
 
-                    <input value="123456@qq.com" id="e-data" style="display: none">
+                    <input value="{{ user.email }}" id="e-data" style="display: none">
                     <div class="row">
                         <div class="col-lg-8 c-1">
                             <span>邮箱：</span>
-                            <span class="nkemail">123456@qq.com</span>
+                            <span class="nkemail">{{ user.email }}</span>
                         </div>
                         <div class="col-lg-4">
                             <button class="btn-info c-2" id="btn-email"><i class="fa fa-pencil-square-o" aria-hidden="true"> 编辑</i>
@@ -399,16 +382,23 @@
                         </div>
                     </div>
                 </div>
-                <!--收藏-->
                 <div class="collection">
-
-                    
-
+                    {% for house in collected_houses %}
+                    <div class="row collection-line" id="collect">
+                        <span class="collect_off" id="{{ house.id }}">取消收藏</span>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div><a href="{{ url_for('pages.house_detail', house_id=house.id) }}"><img class="img-fluid img-box" src="{{ url_for('static', filename='img/house-bg1.jpg') }}" alt=""></a></div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 mx-auto">
+                            <div class="collection-line-info">
+                                </div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
 
 
-            <!--浏览记录-->
             <div class="col-lg-4 col-md-4 mx-auto detail-body">
                 <div class="row browse-record">
                     <div class="col-lg-10 col-md-10 mx-auto">
@@ -419,26 +409,22 @@
                         <span id="del">清空浏览记录</span>
                     </div>
                     <div style="overflow: scroll; height:680px;">
-
-
-                        
+                        {% for house in seen_houses %}
                         <div class="col-lg-10 col-md-10 mx-auto browse-record-first-div">
                             <div class="course">
-                                <div><a href="http://127.0.0.1:5000/house/113544"><img class="img-fluid img-box" src="./user_page_files/house-bg1.jpg" alt=""></a>
+                                <div><a href="{{ url_for('pages.house_detail', house_id=house.id) }}"><img class="img-fluid img-box" src="{{ url_for('static', filename='img/house-bg1.jpg') }}" alt=""></a>
                                 </div>
                                 <div class="course-info">
                                     <span class="glyphicon glyphicon-map-marker"></span>
-                                    <span>门头沟-双峪-石门营小区</span>
+                                    <span>{{ house.region }}-{{ house.block }}-{{ house.address }}</span>
                                 </div>
                                 <div class="course-info1">
-                                    <span>2室1厅-15平方米</span>
-                                    <span class="price">￥&nbsp;1200</span>
+                                    <span>{{ house.rooms }}-{{ house.area }}平方米</span>
+                                    <span class="price">￥&nbsp;{{ house.price }}</span>
                                 </div>
                             </div>
                         </div>
-                        
-
-
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -447,7 +433,6 @@
 
 </header>
 
-<!-- Footer -->
 <footer>
     <div class="container">
         <div class="row">
@@ -458,15 +443,12 @@
     </div>
 </footer>
 
-<!-- Bootstrap core JavaScript -->
-<script src="/static/vendor/jquery/jquery.min.js"></script>
-<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-<!-- Custom scripts for this template -->
-<script src="/static/js/clean-blog.min.js"></script>
-<script src="/static/vendor/jquery/jquery.cookie.js"></script>
+<script src="{{ url_for('static', filename='js/clean-blog.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/jquery/jquery.cookie.js') }}"></script>
 
-<!-- change chanle -->
 <script>
 
     // 删除浏览记录
@@ -475,14 +457,14 @@
         var $span = $(this);
         if ($user_name) {
             $.ajax({
-                url: "/del_record",
+                url: "/api/del_record",
                 type: 'post',
                 data: {
                     user_name: $user_name
                 },
                 success: function (resp) {
                     if (resp["valid"] == '1') {
-                        $span.parent().next().remove();
+                        $span.parent().next().empty();
                         alert(resp["msg"])
                     } else {
                         alert(resp["msg"])
@@ -496,13 +478,12 @@
 
     //  取消收藏
     $(".collect_off").on('click', function () {
-
         var hid = this.id;
         var name = $.cookie('name');
         var $span = $(this);
         if (name) {
             $.ajax({
-                url: "/collect_off",
+                url: "/api/collect_off",
                 type: 'post',
                 data: {
                     house_id: hid,
@@ -527,13 +508,13 @@
     // 登出功能
     $("#logout").on('click', function () {
         $.ajax({
-            url: '/logout',
+            url: '/api/logout',
             type: 'get',
             dataType: 'json',
             success: function (res) {
                 if (res["valid"] == '1') {
                     alert(res["msg"]);
-                    window.location.href = '/';
+                    window.location.href = '{{ url_for("pages.index") }}';
                 } else {
                     alert(res["msg"]);
                 }
@@ -587,7 +568,7 @@
             }
 
             $.ajax({
-                url: "http://127.0.0.1:5000/modify/userinfo/name",
+                url: "/api/modify/userinfo/name",
                 type: 'post',
                 dataType: 'json',
                 data: j_data,
@@ -643,7 +624,7 @@
             }
 
             $.ajax({
-                url: "http://127.0.0.1:5000/modify/userinfo/addr",
+                url: "/api/modify/userinfo/addr",
                 type: 'post',
                 dataType: 'json',
                 data: j_data,
@@ -676,7 +657,7 @@
     var y_pd = $('#p-data').val();
     $("#btn-pd").on('click', function () {
         if (pd_option == 1) {
-            $('.nkpd').html('<input id="nkpd" type="text" required placeholder="6-15位字母或数字">');
+            $('.nkpd').html('<input id="nkpd" type="password" required placeholder="6-15位字母或数字">');
             $('#nkpd').focus();
             $("#btn-pd i").text(' 提交');
             pd_option = 0
@@ -689,8 +670,8 @@
                     j_data['y_name'] = y_name
 
                 } else {
-                    alert('用户名需要6-15位字母或数字');
-                    $('.nkpd').html('<input id="nkpd" type="text" required placeholder="6-15位字母或数字">');
+                    alert('密码需要6-15位字母或数字');
+                    $('.nkpd').html('<input id="nkpd" type="password" required placeholder="6-15位字母或数字">');
                     $('#nkpd').focus();
                     return
                 }
@@ -698,7 +679,7 @@
 
 
             $.ajax({
-                url: "http://127.0.0.1:5000/modify/userinfo/pd",
+                url: "/api/modify/userinfo/pd",
                 type: 'post',
                 dataType: 'json',
                 data: j_data,
@@ -706,18 +687,18 @@
                     if (data['ok']) {
                         alert('修改成功');
                         pd_option = 1;
-                        $('.nkpd').html(v_nkpd);
+                        $('.nkpd').html('******');
                         $("#btn-pd i").text(' 编辑');
                         $('#p-data').attr('value', v_nkpd)
                     } else {
                         alert('修改失败，请重试~');
-                        $('#nkpd').html(y_pd);
+                        $('.nkpd').html('******');
                         $("#btn-pd i").text(' 编辑');
                     }
                 },
                 error: function () {
                     alert('修改失败，请重试~');
-                    $('#nkpd').html(y_pd);
+                    $('.nkpd').html('******');
                     $("#btn-pd i").text(' 编辑');
                 }
 
@@ -738,21 +719,19 @@
         } else {
             var j_data = {};
             var v_nkemail = $('#nkemail').val();
-            if (5 < v_nkemail.length < 16) {
-                if (v_nkemail.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)) {
-                    j_data['email'] = v_nkemail;
-                    j_data['y_name'] = y_name
+            if (v_nkemail.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)) {
+                j_data['email'] = v_nkemail;
+                j_data['y_name'] = y_name
 
-                } else {
-                    alert('邮箱格式错误！');
-                    $('.nkemail').html('<input id="nkemail" type="text" required placeholder="邮箱格式错误！">');
-                    $('#nkemail').focus();
-                    return
-                }
+            } else {
+                alert('邮箱格式错误！');
+                $('.nkemail').html('<input id="nkemail" type="text" required placeholder="邮箱格式错误！">');
+                $('#nkemail').focus();
+                return
             }
 
             $.ajax({
-                url: "http://127.0.0.1:5000/modify/userinfo/email",
+                url: "/api/modify/userinfo/email",
                 type: 'post',
                 dataType: 'json',
                 data: j_data,
@@ -780,7 +759,5 @@
 
     })
 </script>
-
-
 
 </body></html>
