@@ -84,14 +84,23 @@
 
         .collection-line-info .title {
             margin-bottom: 4px;
+            height: 42px; /* 【修复】增加高度以容纳两行文字 */
+            overflow: hidden;
         }
 
         .collection-line-info .title a {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 500;
             letter-spacing: 0.5px;
             text-decoration: none;
-            line-height: 20px;
+            line-height: 1.2; /* 【修复】调整行高以适应换行 */
+
+            /* 【修复】添加CSS截断，确保最多显示两行 */
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .collection-line-info .title a:hover {
@@ -426,3 +435,4 @@
 
 
 </body></html>
+

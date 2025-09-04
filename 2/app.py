@@ -1,7 +1,9 @@
 from flask import request, jsonify, redirect, url_for, session, Blueprint
 from settings import app, db
 from models import User, House
-from sqlalchemy import or_
+from sqlalchemy import or_, func, and_
+import re
+import time
 
 # 1. 从页面路由文件中导入 'pages' 蓝图
 from index_page import pages
@@ -23,6 +25,35 @@ def house_to_dict(house):
         'price': house.price,
         'page_views': house.page_views
     }
+
+
+def clean_price(price_str):
+    """从价格字符串（如 '3500元/月'）中提取数值"""
+    if not price_str:
+        return 0
+    match = re.search(r'(\d+(\.\d+)?)', str(price_str))
+    return float(match.group(1)) if match else 0
+
+
+def build_location_query_filter(region_str):
+    """
+    【优化】根据'区-街道-小区'格式的字符串构建更精确的查询条件
+    """
+    parts = region_str.split('-')
+    region_part = parts[0].replace('区', '') if len(parts) > 0 else ''
+    block_part = parts[1] if len(parts) > 1 else ''
+    address_part = parts[2] if len(parts) > 2 else ''  # 新增：处理第三部分（小区）
+
+    conditions = []
+    if region_part:
+        conditions.append(House.region.like(f"%{region_part}%"))
+    if block_part:
+        conditions.append(House.block.like(f"%{block_part}%"))
+    # 如果有小区信息，则加入查询条件，使定位更精确
+    if address_part:
+        conditions.append(House.address.like(f"%{address_part}%"))
+
+    return and_(*conditions)
 
 
 # --- 3. 定义 'api' 蓝图的所有路由 ---
@@ -170,38 +201,109 @@ def modify_userinfo(field):
     return jsonify(ok='1')
 
 
-# --- 图表数据API ---
+# --- 图表数据API (已修正查询逻辑) ---
 @api.route('/get/scatterdata/<region>')
 def get_scatter_data(region):
-    return jsonify(data=[[10, 8.04], [8, 6.95], [13, 7.58]])
+    print(f"--- [散点图] 正在查询复合区域: {region} ---")
+    location_filter = build_location_query_filter(region)
+    query = House.query.filter(location_filter).limit(100).all()
+    print(f"[散点图] 数据库查询到 {len(query)} 条原始记录")
+    data = []
+    for house in query:
+        try:
+            area_match = re.search(r'(\d+(\.\d+)?)', str(house.area))
+            if area_match:
+                area = float(area_match.group(1))
+                price = clean_price(house.price)
+                if area > 0 and price > 0:
+                    data.append([area, price])
+        except (ValueError, TypeError, AttributeError):
+            continue
+    print(f"[散点图] 清洗后得到 {len(data)} 条有效数据")
+    return jsonify(data=data)
 
 
 @api.route('/get/piedata/<region>')
 def get_pie_data(region):
-    return jsonify(data=[
-        {'value': 335, 'name': '2室1厅'},
-        {'value': 310, 'name': '3室1厅'},
-        {'value': 234, 'name': '1室1厅'}
-    ])
+    print(f"--- [饼图] 正在查询复合区域: {region} ---")
+    location_filter = build_location_query_filter(region)
+    query_result = db.session.query(
+        House.rooms, func.count(House.id)
+    ).filter(
+        location_filter
+    ).group_by(House.rooms).order_by(func.count(House.id).desc()).limit(5).all()
+    print(f"[饼图] 数据库查询到 {len(query_result)} 条分组记录")
+    data = [{'value': count, 'name': rooms} for rooms, count in query_result if rooms]
+    print(f"[饼图] 清洗后得到 {len(data)} 条有效数据")
+    return jsonify(data=data)
 
 
 @api.route('/get/columndata/<region>')
 def get_column_data(region):
-    return jsonify(data={
-        'x_axis': ['小区A', '小区B', '小区C'],
-        'y_axis': [120, 200, 150]
-    })
+    print(f"--- [柱状图] 正在查询复合区域: {region} ---")
+    location_filter = build_location_query_filter(region)
+    # 【修复】按 address (小区) 分组, 而不是 block (街道)
+    top_communities_subquery = db.session.query(
+        House.address, func.count(House.id).label('house_count')
+    ).filter(
+        location_filter, House.address.isnot(None)
+    ).group_by(House.address).order_by(func.count(House.id).desc()).limit(5).subquery()
+
+    top_communities = db.session.query(top_communities_subquery).all()
+    print(f"[柱状图] 查询到 {len(top_communities)} 个热门小区")
+
+    if not top_communities:
+        return jsonify(data={'x_axis': [], 'y_axis': []})
+
+    community_names = [c.address for c in top_communities]
+    # 【修复】查询条件应包含 location_filter 以确保数据范围正确
+    houses_in_top_communities = db.session.query(House).filter(
+        location_filter, House.address.in_(community_names)
+    ).all()
+
+    community_prices = {name: [] for name in community_names}
+    for house in houses_in_top_communities:
+        price = clean_price(house.price)
+        if price > 0 and house.address in community_prices:
+            community_prices[house.address].append(price)
+
+    x_axis = list(community_prices.keys())
+    y_axis = [round(sum(prices) / len(prices), 2) if prices else 0 for prices in community_prices.values()]
+
+    print(f"[柱状图] 计算出 {len(x_axis)} 个小区的平均价格")
+    return jsonify(data={'x_axis': x_axis, 'y_axis': y_axis})
 
 
 @api.route('/get/brokenlinedata/<region>')
 def get_broken_line_data(region):
+    print(f"--- [折线图] 正在查询复合区域: {region} ---")
+    location_filter = build_location_query_filter(region)
+    room_types = ['2室1厅', '3室1厅']
+    series = []
+
+    # 【修复】移除30天的时间限制, 以适应旧数据
+    # thirty_days_ago = int(time.time()) - 30 * 24 * 60 * 60
+
+    for room_type in room_types:
+        query = db.session.query(House.price).filter(
+            location_filter,
+            House.rooms == room_type
+            # House.publish_time > thirty_days_ago
+        ).order_by(House.publish_time.asc()).all()
+
+        print(f"[折线图] 查询到 '{room_type}' {len(query)} 条记录")
+        prices = [clean_price(p[0]) for p in query if clean_price(p[0]) > 0]
+
+        if prices:
+            series.append({'name': room_type, 'type': 'line', 'data': prices})
+
+    max_len = max((len(s['data']) for s in series), default=0)
+    x_axis_labels = [f"数据点 {i + 1}" for i in range(max_len)]
+
     return jsonify(data={
-        'legend': ['2室1厅', '3室1厅'],
-        'x_axis': ['1月', '2月', '3月'],
-        'series': [
-            {'name': '2室1厅', 'type': 'line', 'data': [3000, 3200, 3100]},
-            {'name': '3室1厅', 'type': 'line', 'data': [4500, 4600, 4800]}
-        ]
+        'legend': [s['name'] for s in series],
+        'x_axis': x_axis_labels,
+        'series': series
     })
 
 
@@ -211,3 +313,4 @@ app.register_blueprint(api, url_prefix='/api')  # 给所有API路由添加 /api 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
