@@ -114,11 +114,24 @@
             background: #fff;
         }
 
+        /*.course-info {*/
+        /*    height: 30px;*/
+        /*    font-weight: 500;*/
+        /*    color: #333;*/
+        /*    font-size: 16px;*/
+        /*}*/
         .course-info {
-            height: 30px;
+            height: auto; /* 改为自动高度以适应内容 */
+            min-height: 40px; /* 预留两行文字的最小高度（根据实际字体大小调整） */
             font-weight: 500;
             color: #333;
             font-size: 16px;
+            line-height: 1.5; /* 调整行高使两行文字更舒适 */
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* 限制最多显示2行 */
+            -webkit-box-orient: vertical;
+            overflow: hidden; /* 超出部分隐藏 */
+            text-overflow: ellipsis; /* 超出部分显示省略号 */
         }
 
         .course-info1 {
@@ -387,11 +400,28 @@
                     <div class="row collection-line" id="collect">
                         <span class="collect_off" id="{{ house.id }}">取消收藏</span>
                         <div class="col-lg-5 col-md-5 mx-auto">
-                            <div><a href="{{ url_for('pages.house_detail', house_id=house.id) }}"><img class="img-fluid img-box" src="{{ url_for('static', filename='img/house-bg1.jpg') }}" alt=""></a></div>
+                            <div><a href="{{ url_for('pages.house_detail', house_id=house.id) }}">
+                                <img class="img-fluid img-box" src="{{ url_for('static', filename='img/house-bg1.jpg') }}" alt="">
+                            </a></div>
                         </div>
                         <div class="col-lg-5 col-md-5 mx-auto">
                             <div class="collection-line-info">
+                                <!-- 房源标题 -->
+                                <div class="course-info">
+                                    <span class="glyphicon glyphicon-map-marker"></span>
+                                    <span>{{ house.region }}-{{ house.block }}-{{ house.address }}</span>
                                 </div>
+                                <!-- 房源基本信息 -->
+                                <div class="course-info1">
+                                    <span>{{ house.rooms }}-{{ house.area }}平方米</span>
+                                    <span class="price">￥&nbsp;{{ house.price }}</span>
+                                </div>
+                                {% if house.description %}
+                                <div style="margin-top: 8px; font-size: 13px; color: #666;">
+                                    {{ house.description|truncate(50) }}
+                                </div>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                     {% endfor %}
@@ -452,30 +482,30 @@
 <script>
 
     // 删除浏览记录
-    $("#del").on('click', function () {
-        var $user_name = $.cookie('name');
-        var $span = $(this);
-        if ($user_name) {
-            $.ajax({
-                url: "/api/del_record",
-                type: 'post',
-                data: {
-                    user_name: $user_name
-                },
-                success: function (resp) {
-                    if (resp["valid"] == '1') {
-                        $span.parent().next().empty();
-                        alert(resp["msg"])
-                    } else {
-                        alert(resp["msg"])
-                    }
+$("#del").on('click', function () {
+    var $user_name = "{{ user.name if user else '' }}";  // 改用模板变量获取用户名
+    var $span = $(this);
+    if ($user_name) {
+        $.ajax({
+            url: "/api/del_record",
+            type: 'post',
+            data: {
+                user_name: $user_name
+            },
+            success: function (resp) {
+                if (resp["valid"] == '1') {
+                    alert(resp["msg"]);
+                    // 删除成功后自动刷新页面
+                    window.location.reload();  // 添加这行代码实现自动刷新
+                } else {
+                    alert(resp["msg"])
                 }
-            })
-        } else {
-            alert('您还没有登录!');
-        }
-    });
-
+            }
+        })
+    } else {
+        alert('您还没有登录!');
+    }
+});
     //  取消收藏
     $(".collect_off").on('click', function () {
         var hid = this.id;

@@ -314,7 +314,7 @@
                             <h1 class="text-center">注册</h1>
                         </div>
                         <div class="modal-body">
-                            <form class="form-group" id="registeform" action="{{ url_for('api.register') }}" method="post">
+                            <form class="form-group" id="registeform" action="/api/register" method="post">
                                 <div class="form-group">
                                     <label for="" class="form-info">用户名</label>
                                     <input class="form-control" name="username" type="text" placeholder="6-15位字母或数字">
@@ -353,7 +353,7 @@
                             <h1 class="text-center">登录</h1>
                         </div>
                         <div class="modal-body">
-                            <form class="form-group" id="loginform" action="{{ url_for('api.login') }}" method="post">
+                            <form class="form-group" id="loginform" action="/api/login" method="post">
                                 <div class="form-group">
                                     <label for="" class="form-info">用户名</label>
                                     <input class="form-control" name="username" type="text" placeholder="">
@@ -403,13 +403,10 @@
         $(".zxf_pagediv").createPage({
             pageNum: {{ pagination.pages or 0 }},  // 总的页码数
             current: {{ pagination.page }},  // 当前的页码
-            backfun: function (e) {
+            backfun: function (e) {  // 回调函数
                 var n_current = e['current'];
-                var part_path = window.location.pathname;
-                var path_list = part_path.split('/');
-                path_list[3] = n_current;
-                var n_url = path_list.join('/');
-                window.location.replace(n_url);
+                // 重新加载到新的页面
+                window.location.href = "{{ url_for('pages.search_result', page=0) }}".replace('0', n_current);
             }
         });
 

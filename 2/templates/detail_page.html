@@ -571,7 +571,7 @@
                                 <h1 class="text-center">注册</h1>
                             </div>
                             <div class="modal-body">
-                                <form class="form-group" id="registeform" action="{{ url_for('api.register') }}" method="post">
+                                <form class="form-group" id="registeform" action="/api/register" method="post">
                                     <div class="form-group">
                                         <label for="" class="form-info">用户名</label>
                                         <input class="form-control" name="username" type="text" placeholder="6-15位字母或数字">
@@ -610,7 +610,7 @@
                                 <h1 class="text-center">登录</h1>
                             </div>
                             <div class="modal-body">
-                                <form class="form-group" id="loginform" action="{{ url_for('api.login') }}" method="post">
+                                <form class="form-group" id="loginform" action="/api/login" method="post">
                                     <div class="form-group">
                                         <label for="" class="form-info">用户名</label>
                                         <input class="form-control" name="username" type="text" placeholder="">
